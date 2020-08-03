@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 import ReactDOM from "react-dom";
 const Statistic = (props) => {
-  return <p>{props.name + " " + props.value}</p>;
+  return (
+    <tbody>
+      <tr>
+        <td>{props.name}</td>
+        <td>{props.value}</td>
+      </tr>
+    </tbody>
+  );
 };
 const Statistics = (props) => {
   const { good, neutral, bad } = props;
@@ -11,15 +18,20 @@ const Statistics = (props) => {
     return (
       <div>
         <h1>statistics</h1>
-        <Statistic name='good' value={good} />
-        <Statistic name='neutral' value={neutral} />
-        <Statistic name='bad' value={bad} />
-        <Statistic name='all' value={all} />
-        <Statistic name='average' value={all === 0 ? 0 : (good - bad) / all} />
-        <Statistic
-          name='percentage'
-          value={all === 0 ? 0 : (good * 100) / all}
-        />
+        <table>
+          <Statistic name='good' value={good} />
+          <Statistic name='neutral' value={neutral} />
+          <Statistic name='bad' value={bad} />
+          <Statistic name='all' value={all} />
+          <Statistic
+            name='average'
+            value={all === 0 ? 0 : (good - bad) / all}
+          />
+          <Statistic
+            name='percentage'
+            value={all === 0 ? 0 : (good * 100) / all}
+          />
+        </table>
       </div>
     );
   }
